@@ -1,0 +1,30 @@
+{
+  "name": "vue-bem-generator",
+  "version": "1.0.0",
+  "description": "Vue bem class generator",
+  "keywords": [
+    "vue",
+    "bem"
+  ],
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "npm run build:bem",
+    "build:bem": "babel ./src/main.js --out-dir ./dist",
+    "lint": "eslint ./src/*"
+  },
+  "main": "index.js",
+  "module": "index.js",
+  "repository": "git://github.com/jesus9ias/vue-bem-generator.git",
+  "author": "Jesus Escamilla",
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.1.2",
+    "eslint": "^5.16.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.0.0"
+  }
+}
