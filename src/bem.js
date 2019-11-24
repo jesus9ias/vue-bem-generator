@@ -5,8 +5,8 @@ export const getElem = (element, block) => {
     return block;
   }
   return isString(element)
-    ? `${block}__${element}`
-    : `${block}__${element.join('__')}`;
+    ? block + '__' + element
+    : block + '__' + element.join('__');
 };
 
 export const getMod = (modifier, blockClass) => {
@@ -14,8 +14,8 @@ export const getMod = (modifier, blockClass) => {
     return blockClass;
   }
   if (isString(modifier)) {
-    return `${blockClass} ${blockClass}--${modifier}`;
+    return blockClass + ' ' + blockClass + '--' + modifier;
   }
-  const modifiers = modifier.reduce((prev, modifier) => `${prev} ${blockClass}--${modifier}`, '');
-  return `${blockClass}${modifiers}`;
+  const modifiers = modifier.reduce((prev, modifier) => prev + ' ' + blockClass + '--' + modifier, '');
+  return blockClass + modifiers;
 };
