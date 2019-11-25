@@ -9,10 +9,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "node rollup.config.js",
+    "prepublish": "npm run build",
     "lint": "eslint ./src/*"
   },
   "main": "index.js",
   "module": "index.js",
+  "files": [
+    "dist/",
+    "README.md"
+  ],
   "repository": "git://github.com/jesus9ias/vue-bem-generator.git",
   "author": "Jesus Escamilla",
   "devDependencies": {
