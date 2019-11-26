@@ -1,6 +1,10 @@
 const isString = val => val && typeof val === 'string';
 
-const modifierClass = (index, value) => isNaN(index) ? index + '-' + value : value;
+const modifierClass = (index, value) => isNaN(index)
+  ? value === true
+    ? index
+    : index + '-' + value
+  : value;
 
 const mergedClasses = (prev, block, modifier) => prev + ' ' + block + '--' + modifier;
 
