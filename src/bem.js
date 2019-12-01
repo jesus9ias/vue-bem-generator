@@ -14,7 +14,7 @@ export const getElem = (element, block) => {
   }
   return isString(element)
     ? block + '__' + element
-    : block + '__' + element.join('__');
+    : block + '__' + element.filter(e => e).join('__');
 };
 
 export const getMod = (modifier, blockClass) => {

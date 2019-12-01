@@ -186,7 +186,7 @@ export default {
 </div>
 ```
 
-On elements array, values can be disabled if used falsy values (to enable it should be used any truthy value).
+On elements array, values can be disabled if used falsy values (to enable it again should be used string value).
 
 ```
 <template>
@@ -218,6 +218,9 @@ export default {
 ```
 
 ## Using modifiers
+
+String or array could be used for simple modifiers.
+
 ```
 <template>
   <div :class="bem()">
@@ -268,40 +271,31 @@ export default {
 </div>
 ```
 
-For modifiers an array could be used too, and in same way to elements, falsy values can disable them.
+In same way like elements, a falsy value can disable a modifier.
 
 ```
 <template>
-  <ul :class="bem()">
-    <li
-      v-for="(item, i) in items"
-      :key="i"
-      :class="bemElem('item', [item.selected])"
-    >
-      {{ item.value }}
-    </li>
-  </ul>
+  <div :class="bemMod([color, bordered])">
+    Content
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'list',
+  name: 'main-block',
   data() {
     return {
-      items: [
-        { value: 'One task', selected: false },
-        { value: 'Other task', selected: true }
-      ]
+      color: 'green',
+      bordered: false // Remember to use a string for enable this
     };
   }
 };
 </script>
 
 // Renders
-<ul class="list">
-  <li class="list__item">One task</li>
-  <li class="list__item list__item--selected">Other task</li>
-</ult>
+<div class="main-block main-block-green">
+  Content
+</div>
 ```
 
 Instead sending string or array for modifiers, send an object allowing you to use hyphenate notation.
@@ -327,6 +321,42 @@ export default {
     Head
   </div>
 </div>
+```
+
+Instead of string on each object element, boolean values can disable/enable them.
+
+```
+<template>
+  <ul :class="bem()">
+    <li
+      v-for="(item, i) in items"
+      :key="i"
+      :class="bemElem('item', { selected: item.selected })"
+    >
+      {{ item.value }}
+    </li>
+  </ul>
+</template>
+
+<script>
+export default {
+  name: 'list',
+  data() {
+    return {
+      items: [
+        { value: 'One task', selected: false },
+        { value: 'Other task', selected: true }
+      ]
+    };
+  }
+};
+</script>
+
+// Renders
+<ul class="list">
+  <li class="list__item">One task</li>
+  <li class="list__item list__item--selected">Other task</li>
+</ult>
 ```
 
 ## Api
